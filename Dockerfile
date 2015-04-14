@@ -65,4 +65,5 @@ EXPOSE 8000
 ENTRYPOINT ["/sbin/my_init", "--"]
 
 # Define default command
-CMD ["/usr/bin/acehttp"]
+# Sleep for 5 seconds to make sure the other services have time to startup
+CMD sh -c "sleep 5 && /usr/bin/acehttp"
