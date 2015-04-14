@@ -1,0 +1,4 @@
+#!/bin/bash
+# From: https://github.com/ikatson/docker-acestream-proxy/blob/master/supervisord.conf
+
+exec acestreamengine --log-stdout --client-console --bind-all

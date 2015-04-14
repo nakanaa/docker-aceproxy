@@ -1,0 +1,4 @@
+#!/bin/bash
+# From: https://github.com/ikatson/docker-acestream-proxy/blob/master/supervisord.conf
+
+exec setuser vlc vlc -I telnet --clock-jitter 0 --network-caching 500 --telnet-password admin
