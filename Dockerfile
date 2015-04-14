@@ -48,6 +48,9 @@ RUN \
     # Remove downloaded files
     rm -rf *
 
+# Copy config
+ADD conf/aceconfig.py /usr/local/aceproxy/aceconfig.py
+
 # Setup runit
 RUN mkdir /etc/service/acestream && mkdir /etc/service/vlc
 ADD runit/acestream /etc/service/acestream/run
@@ -55,11 +58,8 @@ ADD runit/vlc /etc/service/vlc/run
 
 RUN curl -L https://raw.githubusercontent.com/nakanaa/conf-fetcher/master/conf-fetcher.sh -o /etc/my_init.d/01_conf-fetcher.sh && chmod +x /etc/my_init.d/01_conf-fetcher.sh
 
-# Expose ports
-# AceProxy port
+# Expose AceProxy port
 EXPOSE 8000
-# AceStream port
-# EXPOSE 62062
 
 # Use baseimage-docker's init system
 ENTRYPOINT ["/sbin/my_init", "--"]
